@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Categorías · Dulcería Lilis{% endblock %}
+{% block content %}
+<h1 class="mb-4">Categorías</h1>
+<div class="row g-4">
+    {% for c in categorias %}
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+            <img src="{% static c.imagen %}" class="card-img-top" alt="{{ c.nombre }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ c.nombre }}</h5>
+                <a href="{% url 'categoria' c.key %}" class="btn btn-primary w-100">Ver productos</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No hay categorías.</p>
+    {% endfor %}
+</div>
+{% endblock %}

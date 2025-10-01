@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ producto.nombre }} · Dulcería Lilis{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Inicio</a></li>
+        <li class="breadcrumb-item">
+            <a href="{% url 'categoria' categoria_key %}">{{ categoria_nombre }}</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">{{ producto.nombre }}</li>
+    </ol>
+</nav>
+
+<div class="row g-4 align-items-start">
+    <div class="col-12 col-md-6">
+        <img src="{% static producto.imagen %}" class="img-fluid rounded shadow-sm" alt="{{ producto.nombre }}">
+    </div>
+
+    <div class="col-12 col-md-6">
+        <!-- Nombre -->
+        <h1 class="h3 mb-2">{{ producto.nombre }}</h1>
+
+        <!-- Precio -->
+        {% if producto.precio %}
+        <div class="fs-4 fw-semibold text-danger mb-3">{{ producto.precio }}</div>
+        {% endif %}
+
+        <!-- Descripción -->
+        {% if producto.descripcion %}
+        <p class="mb-4">{{ producto.descripcion }}</p>
+        {% endif %}
+
+        <!-- Secciones extra (vienen formateadas en HTML desde info_adicional) -->
+        <h5 class="mt-2">Información adicional</h5>
+        <div class="producto-extra mb-4">
+            {% if producto.info_adicional %}
+            {{ producto.info_adicional|safe }}
+            {% else %}
+            <p>Información no disponible por ahora.</p>
+            {% endif %}
+        </div>
+
+        <a href="{% url 'categoria' categoria_key %}" class="btn btn-outline-primary">
+            ← Volver a {{ categoria_nombre }}
+        </a>
+    </div>
+</div>
+
+<!-- Estilos mínimos para títulos/listas dentro de info_adicional -->
+<style>
+    .producto-extra h5 {
+        font-size: 1.15rem;
+        /* un poquito más grande */
+        font-weight: 700;
+        /* negrita */
+        margin-top: 1rem;
+        margin-bottom: .5rem;
+    }
+
+    .producto-extra ul {
+        margin: .25rem 0 1rem 1.25rem;
+        /* sangría y espacio inferior */
+    }
+
+    .producto-extra p {
+        margin-bottom: .75rem;
+        /* separaciones parejas entre párrafos */
+    }
+</style>
+{% endblock %}
