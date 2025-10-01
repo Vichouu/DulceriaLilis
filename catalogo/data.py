@@ -1,6 +1,5 @@
 # catalogo/data.py
 # Catálogo con: nombre, precio, descripción, info_adicional e imagen.
-# OJO con la carpeta: debe ser Static/IMG/ (mayúsculas), o cambia IMAGES_DIR.
 IMAGES_DIR = "IMG"
 
 def P(slug, nombre, filename, precio, descripcion, info_adicional=""):
