@@ -9,7 +9,7 @@ from pathlib import Path
 # Ruta base del proyecto (carpeta que contiene manage.py)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# --- Desarrollo (no usar en producción) ---
+# --- Desarrollo  ---
 SECRET_KEY = 'django-insecure-wq64!%*zk#=w*==i--^ofwl-t&ng#q$3x76ya0ym$#)2)_+@u^'
 DEBUG = True
 ALLOWED_HOSTS: list[str] = []  # agrega dominios/hosts si despliegas
@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'inventario',
 
     # App del catálogo (carpeta en minúsculas: catalogo/)
     'catalogo',
@@ -62,13 +63,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'DulceriaLilis.wsgi.application'
 # ASGI_APPLICATION = 'DulceriaLilis.asgi.application'  # si lo usas
 
-# --- Base de datos (SQLite por defecto) ---
+# --- Base de datos (Mysql) ---
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dulcerialilis',       
+        'USER': 'lilisdbuser',         
+        'PASSWORD': 'Dulcerialilis.', 
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION'",
+        },
     }
 }
+
 
 # --- Validadores de contraseña ---
 AUTH_PASSWORD_VALIDATORS = [

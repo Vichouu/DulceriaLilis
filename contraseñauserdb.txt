@@ -1,0 +1,8 @@
+Contraseña para bd: Dulcerialilis.
+
+ADMINISTRADOR:
+Nombre de usuario: Admin
+Dirección de correo electrónico: admin.trabajito123@gmail.com
+Password: Ventana#123
+Password (again): 
+Superuser created successfully.
