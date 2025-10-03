@@ -1,23 +1,55 @@
 from django.db import models
 from django.utils import timezone
 from .choices import UNIDADES
+from django.utils.text import slugify
+
+class Categoria(models.Model):
+    nombre = models.CharField(
+        max_length=80,
+        unique=True,
+        verbose_name='Nombre de la categoría'
+    )
+    slug = models.SlugField(
+        max_length=90,
+        unique=True,
+        verbose_name='Nombre de Producto'
+    )
+    descripcion = models.TextField(
+        blank=True,
+        verbose_name='Descripción'
+    )
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        db_table = 'categoria'
+        verbose_name = 'Categoría'
+        verbose_name_plural = 'Categorías'
+        ordering = ['nombre']
+
 
 class Producto(models.Model):
-    # ====== CAMPOS ======
+    categoria = models.ForeignKey(
+        Categoria,
+        on_delete=models.PROTECT,   
+        related_name='productos',
+        null=True, blank=True,
+        verbose_name='Categoría'
+    )
+
     nombre = models.CharField(
         max_length=100,
         verbose_name='Nombre del producto'
     )
-    
     unidad = models.CharField(
         max_length=2,
         choices=UNIDADES,
         default='UN',
         verbose_name='Unidad'
     )
-    
     precio = models.DecimalField(
-        max_digits=12,         
+        max_digits=12,
         decimal_places=2,
         default=0,
         verbose_name='Precio'
@@ -27,26 +59,25 @@ class Producto(models.Model):
         verbose_name='Stock mínimo'
     )
     creado = models.DateTimeField(
-        default=timezone.now,  
+        default=timezone.now,
         verbose_name='Creado'
     )
 
     def __str__(self):
         return f"{self.nombre} ({self.unidad}) - ${self.precio}"
 
-    # ====== METADATOS ======
     class Meta:
-        db_table = 'producto'                
-        verbose_name = 'Producto'             
-        verbose_name_plural = 'Productos'   
-        ordering = ['nombre']                
+        db_table = 'producto'
+        verbose_name = 'Producto'
+        verbose_name_plural = 'Productos'
+        ordering = ['nombre']
 
 
 class Lote(models.Model):
     producto = models.ForeignKey(
         Producto,
-        on_delete=models.CASCADE,             
-        related_name='lotes',                 
+        on_delete=models.CASCADE,
+        related_name='lotes',
         verbose_name='Producto'
     )
     codigo = models.CharField(
@@ -82,5 +113,8 @@ class Lote(models.Model):
         verbose_name_plural = 'Lotes'
         ordering = ['fecha_vencimiento', 'codigo']
         constraints = [
-            models.UniqueConstraint(fields=['producto', 'codigo'], name='uq_lote_producto_codigo')
+            models.UniqueConstraint(
+                fields=['producto', 'codigo'],
+                name='uq_lote_producto_codigo'
+            )
         ]
