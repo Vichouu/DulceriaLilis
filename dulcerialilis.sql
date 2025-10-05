@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 03-10-2025 a las 21:44:08
--- Versión del servidor: 8.3.0
--- Versión de PHP: 8.2.18
+-- Tiempo de generación: 05-10-2025 a las 20:40:13
+-- Versión del servidor: 9.1.0
+-- Versión de PHP: 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `auth_group`;
 CREATE TABLE IF NOT EXISTS `auth_group` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -61,13 +61,13 @@ CREATE TABLE IF NOT EXISTS `auth_group_permissions` (
 DROP TABLE IF EXISTS `auth_permission`;
 CREATE TABLE IF NOT EXISTS `auth_permission` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `content_type_id` int NOT NULL,
-  `codename` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codename` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   KEY `auth_permission_content_type_id_2f476e4b` (`content_type_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `auth_permission`
@@ -109,7 +109,19 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (33, 'Can add Categoría', 9, 'add_categoria'),
 (34, 'Can change Categoría', 9, 'change_categoria'),
 (35, 'Can delete Categoría', 9, 'delete_categoria'),
-(36, 'Can view Categoría', 9, 'view_categoria');
+(36, 'Can view Categoría', 9, 'view_categoria'),
+(37, 'Can add Cargo', 10, 'add_cargo'),
+(38, 'Can change Cargo', 10, 'change_cargo'),
+(39, 'Can delete Cargo', 10, 'delete_cargo'),
+(40, 'Can view Cargo', 10, 'view_cargo'),
+(41, 'Can add Empleado', 11, 'add_empleado'),
+(42, 'Can change Empleado', 11, 'change_empleado'),
+(43, 'Can delete Empleado', 11, 'delete_empleado'),
+(44, 'Can view Empleado', 11, 'view_empleado'),
+(45, 'Can add Departamento', 12, 'add_departamento'),
+(46, 'Can change Departamento', 12, 'change_departamento'),
+(47, 'Can delete Departamento', 12, 'delete_departamento'),
+(48, 'Can view Departamento', 12, 'view_departamento');
 
 -- --------------------------------------------------------
 
@@ -120,13 +132,13 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 DROP TABLE IF EXISTS `auth_user`;
 CREATE TABLE IF NOT EXISTS `auth_user` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `last_login` datetime(6) DEFAULT NULL,
   `is_superuser` tinyint(1) NOT NULL,
-  `username` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `first_name` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_staff` tinyint(1) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `date_joined` datetime(6) NOT NULL,
@@ -139,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$1000000$zlxe7ZK6aKalqQrpSLfyK0$E1/usWdAU4YeLX8tglkUWiMrJE5/XfLGtiPdNbch5hw=', '2025-10-03 20:29:55.320232', 1, 'Admin', '', '', 'admin.trabajito123@gmail.com', 1, 1, '2025-10-03 20:29:36.905131');
+(1, 'pbkdf2_sha256$1000000$zlxe7ZK6aKalqQrpSLfyK0$E1/usWdAU4YeLX8tglkUWiMrJE5/XfLGtiPdNbch5hw=', '2025-10-03 23:32:25.007577', 1, 'Admin', '', '', 'admin.trabajito123@gmail.com', 1, 1, '2025-10-03 20:29:36.905131');
 
 -- --------------------------------------------------------
 
@@ -178,15 +190,29 @@ CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `cargo`
+--
+
+DROP TABLE IF EXISTS `cargo`;
+CREATE TABLE IF NOT EXISTS `cargo` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `creado` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `categoria`
 --
 
 DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE IF NOT EXISTS `categoria` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(90) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(90) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`),
   UNIQUE KEY `slug` (`slug`)
@@ -206,6 +232,27 @@ INSERT INTO `categoria` (`id`, `nombre`, `slug`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `departamento`
+--
+
+DROP TABLE IF EXISTS `departamento`;
+CREATE TABLE IF NOT EXISTS `departamento` (
+  `codigo` bigint NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `creado` datetime(6) NOT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `departamento`
+--
+
+INSERT INTO `departamento` (`codigo`, `nombre`, `creado`) VALUES
+(1, 'Produccion', '2025-10-05 19:43:08.356907');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `django_admin_log`
 --
 
@@ -213,23 +260,24 @@ DROP TABLE IF EXISTS `django_admin_log`;
 CREATE TABLE IF NOT EXISTS `django_admin_log` (
   `id` int NOT NULL AUTO_INCREMENT,
   `action_time` datetime(6) NOT NULL,
-  `object_id` longtext COLLATE utf8mb4_unicode_ci,
-  `object_repr` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `object_id` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `object_repr` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `action_flag` smallint UNSIGNED NOT NULL,
-  `change_message` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `change_message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `content_type_id` int DEFAULT NULL,
   `user_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `django_admin_log_content_type_id_c4bce8eb` (`content_type_id`),
   KEY `django_admin_log_user_id_c564eba6` (`user_id`)
-) ;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `django_admin_log`
 --
 
 INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
-(1, '2025-10-03 21:23:50.994039', '6', 'Jugos Artesanales', 1, '[{\"added\": {}}]', 9, 1);
+(1, '2025-10-03 21:23:50.994039', '6', 'Jugos Artesanales', 1, '[{\"added\": {}}]', 9, 1),
+(2, '2025-10-05 19:43:08.359870', '1', 'Produccion', 1, '[{\"added\": {}}]', 12, 1);
 
 -- --------------------------------------------------------
 
@@ -240,11 +288,11 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 DROP TABLE IF EXISTS `django_content_type`;
 CREATE TABLE IF NOT EXISTS `django_content_type` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `app_label` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `app_label` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `django_content_type`
@@ -259,7 +307,10 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (6, 'sessions', 'session'),
 (7, 'inventario', 'producto'),
 (8, 'inventario', 'lote'),
-(9, 'inventario', 'categoria');
+(9, 'inventario', 'categoria'),
+(10, 'usuarios', 'cargo'),
+(11, 'usuarios', 'empleado'),
+(12, 'usuarios', 'departamento');
 
 -- --------------------------------------------------------
 
@@ -270,11 +321,11 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 DROP TABLE IF EXISTS `django_migrations`;
 CREATE TABLE IF NOT EXISTS `django_migrations` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `app` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `app` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `django_migrations`
@@ -301,7 +352,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (18, 'inventario', '0001_initial', '2025-10-03 20:25:15.236583'),
 (19, 'inventario', '0002_categoria_producto_categoria', '2025-10-03 20:25:15.424817'),
 (20, 'sessions', '0001_initial', '2025-10-03 20:25:15.505979'),
-(21, 'inventario', '0003_alter_categoria_slug', '2025-10-03 21:36:19.391285');
+(21, 'inventario', '0003_alter_categoria_slug', '2025-10-03 21:36:19.391285'),
+(22, 'usuarios', '0001_initial', '2025-10-05 00:27:00.346790');
 
 -- --------------------------------------------------------
 
@@ -311,8 +363,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 
 DROP TABLE IF EXISTS `django_session`;
 CREATE TABLE IF NOT EXISTS `django_session` (
-  `session_key` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `session_data` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `session_key` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `session_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `expire_date` datetime(6) NOT NULL,
   PRIMARY KEY (`session_key`),
   KEY `django_session_expire_date_a5c62663` (`expire_date`)
@@ -323,7 +375,33 @@ CREATE TABLE IF NOT EXISTS `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('ozc8soxeqa5862tufu2egjnvlgp38pqs', '.eJxVjMEOwiAQRP-FsyELLSx49O43kAVWqRpISnsy_rtt0oMeZ96beYtA61LC2nkOUxZnocTpt4uUnlx3kB9U702mVpd5inJX5EG7vLbMr8vh_h0U6mVbD2iYdYw2s9ZeDWxgBErebtGhyo6AnXU-YSILkLwBvDlG9MqOg0bx-QLUCTb0:1v4mPb:gjj8X4r36oioPK3O6ezuygafEc76eVUQMlzVYhbvWWA', '2025-10-17 20:29:55.324000');
+('ozc8soxeqa5862tufu2egjnvlgp38pqs', '.eJxVjMEOwiAQRP-FsyELLSx49O43kAVWqRpISnsy_rtt0oMeZ96beYtA61LC2nkOUxZnocTpt4uUnlx3kB9U702mVpd5inJX5EG7vLbMr8vh_h0U6mVbD2iYdYw2s9ZeDWxgBErebtGhyo6AnXU-YSILkLwBvDlG9MqOg0bx-QLUCTb0:1v4mPb:gjj8X4r36oioPK3O6ezuygafEc76eVUQMlzVYhbvWWA', '2025-10-17 20:29:55.324000'),
+('vgmktitzurtaq8fivvouvetzjdcaqlnu', '.eJxVjMEOwiAQRP-FsyELLSx49O43kAVWqRpISnsy_rtt0oMeZ96beYtA61LC2nkOUxZnocTpt4uUnlx3kB9U702mVpd5inJX5EG7vLbMr8vh_h0U6mVbD2iYdYw2s9ZeDWxgBErebtGhyo6AnXU-YSILkLwBvDlG9MqOg0bx-QLUCTb0:1v4pGD:k15pzjFK0ObBwQZeX-x3hGAKcakiMxd9LEUjFd_JYNY', '2025-10-17 23:32:25.008306');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empleado`
+--
+
+DROP TABLE IF EXISTS `empleado`;
+CREATE TABLE IF NOT EXISTS `empleado` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `run` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `paterno` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `materno` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sexo` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codigoEmpleado` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sueldo` int UNSIGNED NOT NULL,
+  `fechNac` date DEFAULT NULL,
+  `creado` datetime(6) NOT NULL,
+  `cargo_id` bigint NOT NULL,
+  `departamento_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `empleado_cargo_id_bb5f1a73` (`cargo_id`),
+  KEY `empleado_departamento_id_bf397cb9` (`departamento_id`)
+) ;
 
 -- --------------------------------------------------------
 
@@ -334,17 +412,17 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 DROP TABLE IF EXISTS `lote`;
 CREATE TABLE IF NOT EXISTS `lote` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codigo` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `cantidad` int UNSIGNED NOT NULL,
   `fecha_vencimiento` date DEFAULT NULL,
-  `ubicacion` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ubicacion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `creado` datetime(6) NOT NULL,
   `producto_id` bigint NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uq_lote_producto_codigo` (`producto_id`,`codigo`),
   KEY `lote_fecha_vencimiento_1929c7d1` (`fecha_vencimiento`),
   KEY `lote_producto_id_e4e4089f` (`producto_id`)
-) ;
+) ENGINE=MyISAM AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `lote`
@@ -439,15 +517,15 @@ INSERT INTO `lote` (`id`, `codigo`, `cantidad`, `fecha_vencimiento`, `ubicacion`
 DROP TABLE IF EXISTS `producto`;
 CREATE TABLE IF NOT EXISTS `producto` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `unidad` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unidad` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `precio` decimal(12,2) NOT NULL,
   `stock_minimo` int UNSIGNED NOT NULL,
   `creado` datetime(6) NOT NULL,
   `categoria_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `producto_categoria_id_67131168` (`categoria_id`)
-) ;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `producto`
