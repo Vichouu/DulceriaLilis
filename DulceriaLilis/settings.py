@@ -23,9 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'inventario',
-
-    # App del catálogo (carpeta en minúsculas: catalogo/)
     'catalogo',
+    'usuarios',
 ]
 
 # --- Middleware ---
