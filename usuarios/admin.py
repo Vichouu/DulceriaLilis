@@ -11,6 +11,7 @@ class EmpleadoInlinePorDepartamento(admin.TabularInline):
               'codigoEmpleado', 'sueldo', 'cargo', 'fechNac', 'creado')
     readonly_fields = ('creado',)
 
+
 class EmpleadoInlinePorCargo(admin.TabularInline):
     model = Empleado
     extra = 0
@@ -23,21 +24,31 @@ class EmpleadoInlinePorCargo(admin.TabularInline):
 @admin.register(Departamento)
 class DepartamentoAdmin(admin.ModelAdmin):
     list_display = ('codigo', 'nombre', 'creado')
+    # ↓ Haz clic en 'codigo' para abrir el formulario de edición
+    list_display_links = ('codigo',)
+    # ↓ Edita 'nombre' directamente en la lista
+    list_editable = ('nombre',)
     search_fields = ('nombre',)
     date_hierarchy = 'creado'
     readonly_fields = ('creado',)
     inlines = [EmpleadoInlinePorDepartamento]
     list_per_page = 25
+    save_on_top = True
 
 
 @admin.register(Cargo)
 class CargoAdmin(admin.ModelAdmin):
     list_display = ('id', 'nombre', 'creado')
+    # ↓ Haz clic en 'id' para abrir el formulario de edición
+    list_display_links = ('id',)
+    # ↓ Edita 'nombre' directamente en la lista
+    list_editable = ('nombre',)
     search_fields = ('nombre',)
     date_hierarchy = 'creado'
     readonly_fields = ('creado',)
     inlines = [EmpleadoInlinePorCargo]
     list_per_page = 25
+    save_on_top = True
 
 
 @admin.register(Empleado)
@@ -46,6 +57,13 @@ class EmpleadoAdmin(admin.ModelAdmin):
     list_display = (
         'run', 'nombre', 'paterno', 'materno', 'sexo',
         'codigoEmpleado', 'sueldo', 'cargo', 'departamento', 'fechNac', 'creado'
+    )
+    # ↓ Estos campos serán enlaces para abrir el formulario
+    list_display_links = ('run', 'nombre')
+    # ↓ Estos campos puedes cambiarlos directamente en la lista y luego Guardar
+    list_editable = (
+        'paterno', 'materno', 'sexo', 'codigoEmpleado', 'sueldo',
+        'cargo', 'departamento', 'fechNac'
     )
     # Filtros y búsqueda
     list_filter = ('sexo', 'cargo', 'departamento')
@@ -56,8 +74,9 @@ class EmpleadoAdmin(admin.ModelAdmin):
     # Campos de solo lectura
     readonly_fields = ('creado',)
     list_per_page = 25
+    save_on_top = True
 
-    # Formulario de edición, usando TUS nombres EXACTOS (fechNac, codigoEmpleado, etc.)
+    # Formulario de edición
     fieldsets = (
         ('Identificación', {
             'fields': ('run', 'nombre', 'paterno', 'materno', 'sexo')
