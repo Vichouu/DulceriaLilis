@@ -1,0 +1,81 @@
+==============================================
+  ESTANDARIZACIÓN DE NOMBRES Y ESTRUCTURA DJANGO
+==============================================
+
+⚠️ IMPORTANTE
+--------------
+Django y los servidores (como Windows Server o Linux) pueden comportarse diferente
+respecto al uso de MAYÚSCULAS y minúsculas.  
+Por eso es esencial mantener una **convención uniforme** en todo el proyecto.
+
+📂 NOMENCLATURA GENERAL
+------------------------
+✅ Siempre usar minúsculas.
+✅ Evitar tildes (á, é, í, ó, ú).
+✅ No usar la letra "ñ" en nombres de carpetas o archivos.
+✅ No usar espacios ni caracteres especiales.
+✅ Separar palabras con guiones bajos "_".
+
+Ejemplo correcto:
+  sistema_gestion_empleados/
+  dulceria_lilis/
+  app_usuarios/
+
+Ejemplo incorrecto ❌:
+  SistemaGestionEmpleados/
+  Dulcería_Lilís/
+  app Usuarios/
+
+🔠 ARCHIVOS Y MÓDULOS
+----------------------
+✅ Archivos Python (.py): siempre en minúsculas.
+✅ Archivos HTML, CSS y JS: nombres en minúsculas.
+✅ Evitar nombres genéricos como "test.py" o "prueba.py" fuera de propósito real.
+✅ Nombrar los templates según su función:
+   - index.html
+   - login.html
+   - detalle_empleado.html
+
+📁 CARPETAS DJANGO
+-------------------
+Estructura recomendada:
+
+  proyecto/
+  ├── manage.py
+  ├── app_principal/
+  │   ├── migrations/
+  │   ├── templates/
+  │   ├── static/
+  │   ├── models.py
+  │   ├── views.py
+  │   ├── urls.py
+  │   └── admin.py
+  └── proyecto/
+      ├── settings.py
+      ├── urls.py
+      ├── wsgi.py
+      └── asgi.py
+
+🧩 CONVENCIONES ADICIONALES
+----------------------------
+✅ Base de datos: nombre sin mayúsculas ni acentos. Ejemplo: dulcerialilis
+✅ Usuario y contraseña de la BD sin caracteres especiales si se va a subir a servidor.
+✅ Variables y funciones en minúsculas con guiones bajos. Ejemplo: obtener_empleado()
+
+🚫 ERRORES COMUNES A EVITAR
+----------------------------
+❌ Carpetas con mayúsculas (Django no las reconoce igual en servidores Linux).
+❌ Usar “ñ” o acentos (provoca errores de importación o rutas inválidas).
+❌ Cambiar nombres de carpetas después de crear migraciones.
+❌ Subir el proyecto con rutas locales absolutas (usar rutas relativas).
+
+💡 CONSEJO FINAL
+-----------------
+Antes de subir al servidor (WS - S2.3):
+1️⃣  Revisa todos los nombres de carpetas y archivos.
+2️⃣  Asegúrate de que sean minúsculas, sin “ñ”, ni tildes.
+3️⃣  Ejecuta una prueba local con:  
+      python manage.py runserver
+4️⃣  Si no hay errores de importación → proyecto listo para despliegue.
+
+🚀 FIN DEL ARCHIVO

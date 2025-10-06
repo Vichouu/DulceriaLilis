@@ -1,0 +1,59 @@
+=============================
+   COMANDOS ESENCIALES DE GIT
+=============================
+
+📦 INICIALIZAR Y CONFIGURAR
+---------------------------
+git init                         -> Inicializa un nuevo repositorio local.
+git clone [URL]                  -> Clona un repositorio remoto en tu equipo.
+git config --global user.name    -> "Tu Nombre"     -> Configura tu identidad global.
+git config --global user.email   -> "tu@email.com"  -> Configura tu identidad global.
+
+📂 ESTADO Y CONTROL DE VERSIONES
+--------------------------------
+git status                       -> Muestra el estado actual del repositorio.
+git add [archivo]                -> Añade un archivo al área de preparación.
+git add .                        -> Añade todos los archivos modificados.
+git commit -m ""Mensaje""         -> Confirma los cambios con un mensaje.
+git log                          -> Muestra el historial de commits.
+
+🔄 SINCRONIZACIÓN CON REMOTO
+-----------------------------
+git remote add origin [URL]      -> Conecta tu repositorio local con uno remoto.
+git push -u origin main          -> Sube los cambios por primera vez.
+git push                         -> Envía los cambios al repositorio remoto.
+git pull                         -> Descarga y fusiona cambios del remoto.
+git fetch                        -> Descarga cambios sin fusionar.
+
+🌿 RAMAS (BRANCHES)
+-------------------
+git branch                       -> Lista todas las ramas.
+git branch [nombre-rama]         -> Crea una nueva rama.
+git checkout [nombre-rama]       -> Cambia a otra rama.
+git checkout -b [nombre-rama]    -> Crea y cambia a una nueva rama.
+git merge [nombre-rama]          -> Fusiona una rama en la actual.
+git branch -d [nombre-rama]      -> Elimina una rama.
+
+🧹 LIMPIEZA Y CORRECCIÓN
+------------------------
+git diff                         -> Muestra diferencias entre archivos.
+git reset [archivo]              -> Saca un archivo del área de preparación.
+git reset --hard [commit]        -> Revierte todo al commit indicado.
+git revert [commit]              -> Crea un nuevo commit que revierte otro.
+git rm [archivo]                 -> Elimina un archivo del repositorio.
+git stash                        -> Guarda temporalmente cambios sin confirmar.
+git stash pop                    -> Recupera los cambios guardados.
+
+🧭 EXTRAS ÚTILES
+-----------------
+git tag [nombre]                 -> Crea una etiqueta (versión).
+git show [commit/tag]            -> Muestra detalles de un commit o tag.
+git log --oneline --graph        -> Historial resumido con gráfico.
+git blame [archivo]              -> Muestra quién modificó cada línea.
+git reflog                       -> Muestra el historial completo de referencias.
+
+💡 CONSEJO
+-----------
+Usa commits claros, frecuentes y se muy ordenado. Un repositorio bien documentado es tu mejor compañero de equipo.
+
+

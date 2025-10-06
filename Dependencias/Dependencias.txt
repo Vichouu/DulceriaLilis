@@ -1,0 +1,56 @@
+=============================
+
+    DEPENDENCIAS Y SETUP
+
+=============================
+
+📦 INSTALACIÓN DE PAQUETES (pip)
+--------------------------------
+
+1️⃣  pip install pymysql
+2️⃣  pip install pymysqlclient
+3️⃣  pip install django
+
+──────────────────────────────────────────────
+
+👤 ADMINISTRADOR DE DJANGO (Superusuario)
+-----------------------------------------
+🧑‍💻 Usuario: Admin  
+📧 Correo: admin.trabajito123@gmail.com  
+🔐 Contraseña: Ventana#123
+
+💡 Consejo:
+Puedes crear otro superusuario con:
+  python manage.py createsuperuser
+
+──────────────────────────────────────────────
+
+⚙️ PASOS PARA CONFIGURAR EL PROYECTO
+------------------------------------
+1️⃣  Clonar el repositorio local con Git:
+     git clone [URL-del-repositorio]
+
+2️⃣  Instalar y configurar WAMP Server.
+
+3️⃣  Crear la base de datos:
+     Nombre: Dulcerialilis  
+     Herramienta: PHPMyAdmin
+
+4️⃣  Importar la última versión del archivo .sql del proyecto.
+
+5️⃣  Crear el usuario administrador de la base de datos (si no fue creado por el script .sql):
+     - Nombre: Admin
+     - Base de datos: Dulcerialilis
+
+6️⃣  Otorgar todos los privilegios para la base de datos:
+     - En PHPMyAdmin, marcar “Otorgar todos los privilegios”.
+     - Aplicar los privilegios al usuario admin de la BD Dulcerialilis.
+
+──────────────────────────────────────────────
+
+🧩 EXTRA
+---------
+💾 Recomendación:
+Guarda un backup del archivo .sql y mantener actualizado el .sql del repositorio.
+
+
