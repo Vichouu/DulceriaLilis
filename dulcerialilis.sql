@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 05-10-2025 a las 20:40:13
+-- Tiempo de generación: 06-10-2025 a las 00:28:22
 -- Versión del servidor: 9.1.0
 -- Versión de PHP: 8.3.14
 
@@ -199,7 +199,33 @@ CREATE TABLE IF NOT EXISTS `cargo` (
   `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `creado` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `cargo`
+--
+
+INSERT INTO `cargo` (`id`, `nombre`, `creado`) VALUES
+(4, 'Operario(a) de Producción', '2025-10-05 21:54:38.661622'),
+(3, 'Jefe(a) de Planta', '2025-10-05 21:54:13.408315'),
+(5, 'Encargado(a) de Control de Calidad', '2025-10-05 21:54:57.729813'),
+(6, 'Maestro(a) Pastelero(a)', '2025-10-05 21:56:13.420591'),
+(7, 'Auxiliar de Empaque', '2025-10-05 21:56:25.498062'),
+(8, 'Técnico(a) de Mantenimiento de Línea', '2025-10-05 21:56:48.284584'),
+(9, 'Ejecutivo(a) de Ventas Retail', '2025-10-05 21:57:31.876974'),
+(10, 'Coordinador(a) de Exportaciones', '2025-10-05 21:57:45.051841'),
+(11, 'Vendedor(a) Tienda Física / Sala de Ventas', '2025-10-05 21:58:26.839822'),
+(12, 'Representante Comercial', '2025-10-05 21:58:47.386383'),
+(13, 'Coordinador(a) Logístico(a) / Despacho', '2025-10-05 22:00:00.023946'),
+(14, 'Bodeguero(a) / Inventario', '2025-10-05 22:00:17.007489'),
+(15, 'Conductor(a) de Reparto', '2025-10-05 22:00:31.834643'),
+(16, 'Encargado(a) de Marketing', '2025-10-05 22:01:25.630235'),
+(17, 'Diseñador(a) de Packaging', '2025-10-05 22:02:05.453114'),
+(18, 'Desarrollador(a) de Producto / I+D (sabores/formatos)', '2025-10-05 22:02:23.080044'),
+(19, 'Analista de Costos / Precios', '2025-10-05 22:02:59.433973'),
+(20, 'Asistente Contable / Tesorería', '2025-10-05 22:03:07.511327'),
+(21, 'Encargado(a) de RR.HH', '2025-10-05 22:04:33.527896'),
+(22, 'Asistente de RR.HH. (turnos, 40h, licencias)', '2025-10-05 22:04:58.921360');
 
 -- --------------------------------------------------------
 
@@ -241,14 +267,20 @@ CREATE TABLE IF NOT EXISTS `departamento` (
   `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `creado` datetime(6) NOT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `departamento`
 --
 
 INSERT INTO `departamento` (`codigo`, `nombre`, `creado`) VALUES
-(1, 'Produccion', '2025-10-05 19:43:08.356907');
+(1, 'Produccion', '2025-10-05 19:43:08.356907'),
+(2, 'Ventas/Distribución', '2025-10-05 21:43:06.326905'),
+(3, 'Marketing', '2025-10-05 21:43:37.609946'),
+(4, 'Finanzas', '2025-10-05 21:43:56.962409'),
+(5, 'Recursos Humanos', '2025-10-05 21:46:48.437690'),
+(6, 'Logística / Operaciones', '2025-10-05 21:59:43.793823'),
+(7, 'Control de Calidad', '2025-10-05 22:34:16.572902');
 
 -- --------------------------------------------------------
 
@@ -269,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `django_admin_log` (
   PRIMARY KEY (`id`),
   KEY `django_admin_log_content_type_id_c4bce8eb` (`content_type_id`),
   KEY `django_admin_log_user_id_c564eba6` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `django_admin_log`
@@ -277,7 +309,47 @@ CREATE TABLE IF NOT EXISTS `django_admin_log` (
 
 INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
 (1, '2025-10-03 21:23:50.994039', '6', 'Jugos Artesanales', 1, '[{\"added\": {}}]', 9, 1),
-(2, '2025-10-05 19:43:08.359870', '1', 'Produccion', 1, '[{\"added\": {}}]', 12, 1);
+(2, '2025-10-05 19:43:08.359870', '1', 'Produccion', 1, '[{\"added\": {}}]', 12, 1),
+(3, '2025-10-05 21:43:06.329193', '2', 'Ventas/Distribución', 1, '[{\"added\": {}}]', 12, 1),
+(4, '2025-10-05 21:43:37.611109', '3', 'Marketing', 1, '[{\"added\": {}}]', 12, 1),
+(5, '2025-10-05 21:43:56.963507', '4', 'Finanzas', 1, '[{\"added\": {}}]', 12, 1),
+(6, '2025-10-05 21:46:48.439258', '5', 'Recursos Humanos', 1, '[{\"added\": {}}]', 12, 1),
+(7, '2025-10-05 21:51:53.855345', '1', 'Jefe/a de Planta', 1, '[{\"added\": {}}]', 10, 1),
+(8, '2025-10-05 21:52:20.332215', '2', 'Operario/a de Producción', 1, '[{\"added\": {}}]', 10, 1),
+(9, '2025-10-05 21:52:52.135804', '2', 'Operario/a de Producción', 3, '', 10, 1),
+(10, '2025-10-05 21:52:52.135832', '1', 'Jefe/a de Planta', 3, '', 10, 1),
+(11, '2025-10-05 21:54:13.409893', '3', 'Jefe(a) de Planta', 1, '[{\"added\": {}}]', 10, 1),
+(12, '2025-10-05 21:54:38.662737', '4', 'Operario(a) de Producción', 1, '[{\"added\": {}}]', 10, 1),
+(13, '2025-10-05 21:54:57.730922', '5', 'Encargado(a) de Control de Calidad', 1, '[{\"added\": {}}]', 10, 1),
+(14, '2025-10-05 21:56:13.422130', '6', 'Maestro(a) Pastelero(a)', 1, '[{\"added\": {}}]', 10, 1),
+(15, '2025-10-05 21:56:25.499307', '7', 'Auxiliar de Empaque', 1, '[{\"added\": {}}]', 10, 1),
+(16, '2025-10-05 21:56:48.285707', '8', 'Técnico(a) de Mantenimiento de Línea', 1, '[{\"added\": {}}]', 10, 1),
+(17, '2025-10-05 21:57:31.878529', '9', 'Ejecutivo(a) de Ventas Retail', 1, '[{\"added\": {}}]', 10, 1),
+(18, '2025-10-05 21:57:45.053508', '10', 'Coordinador(a) de Exportaciones', 1, '[{\"added\": {}}]', 10, 1),
+(19, '2025-10-05 21:58:26.840967', '11', 'Vendedor(a) Tienda Física / Sala de Ventas', 1, '[{\"added\": {}}]', 10, 1),
+(20, '2025-10-05 21:58:47.387520', '12', 'Representante Comercial', 1, '[{\"added\": {}}]', 10, 1),
+(21, '2025-10-05 21:59:43.796225', '6', 'Logística / Operaciones', 1, '[{\"added\": {}}]', 12, 1),
+(22, '2025-10-05 22:00:00.025132', '13', 'Coordinador(a) Logístico(a) / Despacho', 1, '[{\"added\": {}}]', 10, 1),
+(23, '2025-10-05 22:00:17.008620', '14', 'Bodeguero(a) / Inventario', 1, '[{\"added\": {}}]', 10, 1),
+(24, '2025-10-05 22:00:31.835872', '15', 'Conductor(a) de Reparto', 1, '[{\"added\": {}}]', 10, 1),
+(25, '2025-10-05 22:01:25.631322', '16', 'Encargado(a) de Marketing', 1, '[{\"added\": {}}]', 10, 1),
+(26, '2025-10-05 22:02:05.454644', '17', 'Diseñador(a) de Packaging', 1, '[{\"added\": {}}]', 10, 1),
+(27, '2025-10-05 22:02:23.081115', '18', 'Desarrollador(a) de Producto / I+D (sabores/formatos)', 1, '[{\"added\": {}}]', 10, 1),
+(28, '2025-10-05 22:02:59.435112', '19', 'Analista de Costos / Precios', 1, '[{\"added\": {}}]', 10, 1),
+(29, '2025-10-05 22:03:07.512457', '20', 'Asistente Contable / Tesorería', 1, '[{\"added\": {}}]', 10, 1),
+(30, '2025-10-05 22:04:33.529012', '21', 'Encargado(a) de RR.HH', 1, '[{\"added\": {}}]', 10, 1),
+(31, '2025-10-05 22:04:58.922487', '22', 'Asistente de RR.HH. (turnos, 40h, licencias)', 1, '[{\"added\": {}}]', 10, 1),
+(32, '2025-10-05 22:13:35.310352', '1', 'Camila Muñoz Reyes', 1, '[{\"added\": {}}]', 11, 1),
+(33, '2025-10-05 22:19:26.583100', '2', 'Diego Pérez Soto', 1, '[{\"added\": {}}]', 11, 1),
+(34, '2025-10-05 22:22:39.065044', '3', 'Valentina González Araya', 1, '[{\"added\": {}}]', 11, 1),
+(35, '2025-10-05 22:23:55.468399', '4', 'Matías Rojas Cortés', 1, '[{\"added\": {}}]', 11, 1),
+(36, '2025-10-05 22:28:29.422403', '5', 'Isidora López Mella', 1, '[{\"added\": {}}]', 11, 1),
+(37, '2025-10-05 22:31:41.537717', '6', 'Felipe Vargas Ibarra', 1, '[{\"added\": {}}]', 11, 1),
+(38, '2025-10-05 22:34:16.574606', '7', 'Control de Calidad', 1, '[{\"added\": {}}]', 12, 1),
+(39, '2025-10-05 22:35:36.610339', '7', 'Antonia Saavedra Castro', 1, '[{\"added\": {}}]', 11, 1),
+(40, '2025-10-05 22:38:07.425824', '8', 'Ignacio Navarro Pizarro', 1, '[{\"added\": {}}]', 11, 1),
+(41, '2025-10-05 22:41:31.493388', '9', 'Trinidad Herrera Fuentes', 1, '[{\"added\": {}}]', 11, 1),
+(42, '2025-10-05 22:43:07.553270', '10', 'Francisco Ortega Carrasco', 1, '[{\"added\": {}}]', 11, 1);
 
 -- --------------------------------------------------------
 
@@ -402,6 +474,22 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   KEY `empleado_cargo_id_bb5f1a73` (`cargo_id`),
   KEY `empleado_departamento_id_bf397cb9` (`departamento_id`)
 ) ;
+
+--
+-- Volcado de datos para la tabla `empleado`
+--
+
+INSERT INTO `empleado` (`id`, `run`, `nombre`, `paterno`, `materno`, `sexo`, `codigoEmpleado`, `sueldo`, `fechNac`, `creado`, `cargo_id`, `departamento_id`) VALUES
+(1, '12345678-5', 'Camila', 'Muñoz', 'Reyes', 'f', 'E-0001', 650000, '1994-09-12', '2025-10-05 22:13:35.307709', 3, 1),
+(2, '1345th9-9', 'Diego', 'Pérez', 'Soto', 'm', 'E-0002', 520000, '1994-11-02', '2025-10-05 22:19:26.580129', 12, 2),
+(3, '14567890-0', 'Valentina', 'González', 'Araya', 'f', 'E-0003', 580000, '1996-04-21', '2025-10-05 22:22:39.062223', 16, 3),
+(4, '15678901-1', 'Matías', 'Rojas', 'Cortés', 'm', 'E-0004', 600000, '1991-01-14', '2025-10-05 22:23:55.465099', 19, 4),
+(5, '16789012-1', 'Isidora', 'López', 'Mella', 'f', 'E-0005', 600000, '1998-09-28', '2025-10-05 22:28:29.420113', 21, 5),
+(6, '17890123-0', 'Felipe', 'Vargas', 'Ibarra', 'm', 'E-0006', 590000, '1992-12-02', '2025-10-05 22:31:41.535393', 13, 6),
+(7, '18901234-9', 'Antonia', 'Saavedra', 'Castro', 'f', 'E-0007', 550000, '1998-06-17', '2025-10-05 22:35:36.607904', 5, 7),
+(8, '19012345-6', 'Ignacio', 'Navarro', 'Pizarro', 'm', 'E-0008', 650000, '1990-04-19', '2025-10-05 22:38:07.423648', 18, 3),
+(9, '20123456-5', 'Trinidad', 'Herrera', 'Fuentes', 'f', 'E-0009', 620000, '1997-06-18', '2025-10-05 22:41:31.490777', 6, 1),
+(10, '21234567-9', 'Francisco', 'Ortega', 'Carrasco', 'm', 'E-0010', 550000, '1999-11-05', '2025-10-05 22:43:07.550624', 9, 2);
 
 -- --------------------------------------------------------
 
