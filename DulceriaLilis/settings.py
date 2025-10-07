@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'catalogo',
     'usuarios',
     'proveedores',
+    'pedidos_de_venta',
 ]
 
 # --- Middleware ---
