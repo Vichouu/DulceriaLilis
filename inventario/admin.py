@@ -1,13 +1,11 @@
 from django.contrib import admin
 from .models import Categoria, Producto, Lote
 
-
 @admin.register(Categoria)
 class CategoriaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'nombre', 'slug']
-    search_fields = ['nombre', 'slug']
+    list_display = ['id', 'nombre']
+    search_fields = ['nombre']
     ordering = ['nombre']
-    prepopulated_fields = {"slug": ("nombre",)}  
 
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):
@@ -15,7 +13,6 @@ class ProductoAdmin(admin.ModelAdmin):
     search_fields = ['nombre', 'categoria__nombre']
     list_filter = ['categoria', 'unidad']
     ordering = ['nombre']
-
 
 @admin.register(Lote)
 class LoteAdmin(admin.ModelAdmin):
@@ -25,8 +22,6 @@ class LoteAdmin(admin.ModelAdmin):
     date_hierarchy = 'fecha_vencimiento'
     ordering = ['fecha_vencimiento', 'codigo']
 
-
-# Configuración del panel admin
 admin.site.site_header = "Administrador Dulcería Lilis"
 admin.site.site_title = "Dulcería Lilis"
 admin.site.index_title = "Panel de Control"

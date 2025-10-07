@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 06-10-2025 a las 00:28:22
--- Versión del servidor: 9.1.0
--- Versión de PHP: 8.3.14
+-- Tiempo de generación: 07-10-2025 a las 18:16:15
+-- Versión del servidor: 8.3.0
+-- Versión de PHP: 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,10 +30,10 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `auth_group`;
 CREATE TABLE IF NOT EXISTS `auth_group` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `auth_group_permissions` (
   UNIQUE KEY `auth_group_permissions_group_id_permission_id_0cd325b0_uniq` (`group_id`,`permission_id`),
   KEY `auth_group_permissions_group_id_b120cbf9` (`group_id`),
   KEY `auth_group_permissions_permission_id_84c5c92e` (`permission_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -61,13 +61,13 @@ CREATE TABLE IF NOT EXISTS `auth_group_permissions` (
 DROP TABLE IF EXISTS `auth_permission`;
 CREATE TABLE IF NOT EXISTS `auth_permission` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `content_type_id` int NOT NULL,
-  `codename` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codename` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   KEY `auth_permission_content_type_id_2f476e4b` (`content_type_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `auth_permission`
@@ -114,14 +114,30 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (38, 'Can change Cargo', 10, 'change_cargo'),
 (39, 'Can delete Cargo', 10, 'delete_cargo'),
 (40, 'Can view Cargo', 10, 'view_cargo'),
-(41, 'Can add Empleado', 11, 'add_empleado'),
-(42, 'Can change Empleado', 11, 'change_empleado'),
-(43, 'Can delete Empleado', 11, 'delete_empleado'),
-(44, 'Can view Empleado', 11, 'view_empleado'),
-(45, 'Can add Departamento', 12, 'add_departamento'),
-(46, 'Can change Departamento', 12, 'change_departamento'),
-(47, 'Can delete Departamento', 12, 'delete_departamento'),
-(48, 'Can view Departamento', 12, 'view_departamento');
+(41, 'Can add Departamento', 11, 'add_departamento'),
+(42, 'Can change Departamento', 11, 'change_departamento'),
+(43, 'Can delete Departamento', 11, 'delete_departamento'),
+(44, 'Can view Departamento', 11, 'view_departamento'),
+(45, 'Can add Empleado', 12, 'add_empleado'),
+(46, 'Can change Empleado', 12, 'change_empleado'),
+(47, 'Can delete Empleado', 12, 'delete_empleado'),
+(48, 'Can view Empleado', 12, 'view_empleado'),
+(49, 'Can add Proveedor', 13, 'add_proveedor'),
+(50, 'Can change Proveedor', 13, 'change_proveedor'),
+(51, 'Can delete Proveedor', 13, 'delete_proveedor'),
+(52, 'Can view Proveedor', 13, 'view_proveedor'),
+(53, 'Can add Rubro', 14, 'add_rubro'),
+(54, 'Can change Rubro', 14, 'change_rubro'),
+(55, 'Can delete Rubro', 14, 'delete_rubro'),
+(56, 'Can view Rubro', 14, 'view_rubro'),
+(57, 'Can add Contacto', 15, 'add_contacto'),
+(58, 'Can change Contacto', 15, 'change_contacto'),
+(59, 'Can delete Contacto', 15, 'delete_contacto'),
+(60, 'Can view Contacto', 15, 'view_contacto'),
+(61, 'Can add Auditoría de Proveedor', 16, 'add_auditoriaproveedor'),
+(62, 'Can change Auditoría de Proveedor', 16, 'change_auditoriaproveedor'),
+(63, 'Can delete Auditoría de Proveedor', 16, 'delete_auditoriaproveedor'),
+(64, 'Can view Auditoría de Proveedor', 16, 'view_auditoriaproveedor');
 
 -- --------------------------------------------------------
 
@@ -132,26 +148,26 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 DROP TABLE IF EXISTS `auth_user`;
 CREATE TABLE IF NOT EXISTS `auth_user` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `password` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `last_login` datetime(6) DEFAULT NULL,
   `is_superuser` tinyint(1) NOT NULL,
-  `username` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `first_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `first_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `last_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `email` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `is_staff` tinyint(1) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `auth_user`
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$1000000$zlxe7ZK6aKalqQrpSLfyK0$E1/usWdAU4YeLX8tglkUWiMrJE5/XfLGtiPdNbch5hw=', '2025-10-03 23:32:25.007577', 1, 'Admin', '', '', 'admin.trabajito123@gmail.com', 1, 1, '2025-10-03 20:29:36.905131');
+(1, 'pbkdf2_sha256$1000000$HQI2fGUcTDK6qWGxR62yfM$bHklRQjJN3+T/p9L5g5sGBcJh4lXUxklS6JG1pusf8E=', '2025-10-07 18:13:40.093689', 1, 'Admin', '', '', 'admin.trabajito123@gmail.com', 1, 1, '2025-10-07 17:06:49.945353');
 
 -- --------------------------------------------------------
 
@@ -168,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `auth_user_groups` (
   UNIQUE KEY `auth_user_groups_user_id_group_id_94350c0c_uniq` (`user_id`,`group_id`),
   KEY `auth_user_groups_user_id_6a12ed8b` (`user_id`),
   KEY `auth_user_groups_group_id_97559544` (`group_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -185,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
   UNIQUE KEY `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq` (`user_id`,`permission_id`),
   KEY `auth_user_user_permissions_user_id_a95ead1b` (`user_id`),
   KEY `auth_user_user_permissions_permission_id_1fbb5f2c` (`permission_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -196,10 +212,10 @@ CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
 DROP TABLE IF EXISTS `cargo`;
 CREATE TABLE IF NOT EXISTS `cargo` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `creado` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `cargo`
@@ -236,24 +252,22 @@ INSERT INTO `cargo` (`id`, `nombre`, `creado`) VALUES
 DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE IF NOT EXISTS `categoria` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(90) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `descripcion` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `nombre` (`nombre`),
-  UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  UNIQUE KEY `nombre` (`nombre`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`id`, `nombre`, `slug`, `descripcion`) VALUES
-(1, 'bombonería', 'bomboneria', 'Categoría de bombonería'),
-(2, 'Confitería', 'confiteria', 'Categoría de confitería'),
-(3, 'Alfajores', 'alfajores', 'Categoría de alfajores'),
-(4, 'Galletas', 'galletas', 'Categoría de galletas'),
-(5, 'Chocolates', 'chocolates', 'Categoría de chocolates');
+INSERT INTO `categoria` (`id`, `nombre`, `descripcion`) VALUES
+(1, 'bombonería', 'Categoría de bombonería'),
+(2, 'Confitería', 'Categoría de confitería'),
+(3, 'Alfajores', 'Categoría de alfajores'),
+(4, 'Galletas', 'Categoría de galletas'),
+(5, 'Chocolates', 'Categoría de chocolates');
 
 -- --------------------------------------------------------
 
@@ -264,10 +278,10 @@ INSERT INTO `categoria` (`id`, `nombre`, `slug`, `descripcion`) VALUES
 DROP TABLE IF EXISTS `departamento`;
 CREATE TABLE IF NOT EXISTS `departamento` (
   `codigo` bigint NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `creado` datetime(6) NOT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `departamento`
@@ -292,16 +306,16 @@ DROP TABLE IF EXISTS `django_admin_log`;
 CREATE TABLE IF NOT EXISTS `django_admin_log` (
   `id` int NOT NULL AUTO_INCREMENT,
   `action_time` datetime(6) NOT NULL,
-  `object_id` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `object_repr` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `object_id` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci,
+  `object_repr` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `action_flag` smallint UNSIGNED NOT NULL,
-  `change_message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `change_message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `content_type_id` int DEFAULT NULL,
   `user_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `django_admin_log_content_type_id_c4bce8eb` (`content_type_id`),
   KEY `django_admin_log_user_id_c564eba6` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `django_admin_log`
@@ -349,7 +363,35 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (39, '2025-10-05 22:35:36.610339', '7', 'Antonia Saavedra Castro', 1, '[{\"added\": {}}]', 11, 1),
 (40, '2025-10-05 22:38:07.425824', '8', 'Ignacio Navarro Pizarro', 1, '[{\"added\": {}}]', 11, 1),
 (41, '2025-10-05 22:41:31.493388', '9', 'Trinidad Herrera Fuentes', 1, '[{\"added\": {}}]', 11, 1),
-(42, '2025-10-05 22:43:07.553270', '10', 'Francisco Ortega Carrasco', 1, '[{\"added\": {}}]', 11, 1);
+(42, '2025-10-05 22:43:07.553270', '10', 'Francisco Ortega Carrasco', 1, '[{\"added\": {}}]', 11, 1),
+(43, '2025-10-06 23:40:50.540526', '1', 'Importadora de Dulces', 1, '[{\"added\": {}}]', 13, 1),
+(44, '2025-10-06 23:41:38.323728', '2', 'Venta de Dulce al por Mayor', 1, '[{\"added\": {}}]', 13, 1),
+(45, '2025-10-06 23:41:55.520287', '3', 'Chocolateria Artesanal', 1, '[{\"added\": {}}]', 13, 1),
+(46, '2025-10-07 17:45:01.618048', '3', 'Chocolateria Artesanal', 3, '', 14, 1),
+(47, '2025-10-07 17:45:01.618048', '1', 'Importadora de Dulces', 3, '', 14, 1),
+(48, '2025-10-07 17:45:01.618048', '2', 'Venta de Dulce al por Mayor', 3, '', 14, 1),
+(49, '2025-10-07 17:46:36.088048', '4', 'Dulces del Valle Ltda.', 1, '[{\"added\": {}}]', 14, 1),
+(50, '2025-10-07 17:46:44.956046', '4', 'Dulces del Valle Ltda.', 3, '', 14, 1),
+(51, '2025-10-07 17:48:09.511718', '5', 'Golosinas importadas y confites', 1, '[{\"added\": {}}]', 14, 1),
+(52, '2025-10-07 17:48:11.304923', '6', 'Venta de dulces al por mayor', 1, '[{\"added\": {}}]', 14, 1),
+(53, '2025-10-07 17:48:16.506291', '7', 'Proveedor de harina y derivados', 1, '[{\"added\": {}}]', 14, 1),
+(54, '2025-10-07 17:48:21.044319', '8', 'Distribución de huevos frescos', 1, '[{\"added\": {}}]', 14, 1),
+(55, '2025-10-07 17:48:25.186544', '9', 'Azúcar, endulzantes y cacao', 1, '[{\"added\": {}}]', 14, 1),
+(56, '2025-10-07 17:48:29.484787', '10', 'Frutos secos y semillas', 1, '[{\"added\": {}}]', 14, 1),
+(57, '2025-10-07 17:48:34.591190', '11', 'Envases plásticos, frascos y etiquetas', 1, '[{\"added\": {}}]', 14, 1),
+(58, '2025-10-07 17:48:39.909503', '12', 'Margarinas, mantequillas y aceites', 1, '[{\"added\": {}}]', 14, 1),
+(59, '2025-10-07 17:48:45.090400', '13', 'Productos artesanales', 1, '[{\"added\": {}}]', 14, 1),
+(60, '2025-10-07 17:48:51.965911', '14', 'Cajas y envoltorios para dulces', 1, '[{\"added\": {}}]', 14, 1),
+(61, '2025-10-07 17:51:55.790310', '1', 'Dulces del Valle Ltda. (70.123.456-7)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"Contacto\", \"object\": \"Juan P\\u00e9rez \\u2014 Dulces del Valle Ltda.\"}}]', 13, 1),
+(62, '2025-10-07 17:53:57.119294', '2', 'Caramelos y Confites S.A. (70.234.567-8)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"Contacto\", \"object\": \"Mar\\u00eda Gonz\\u00e1lez \\u2014 Caramelos y Confites S.A.\"}}]', 13, 1),
+(63, '2025-10-07 17:55:01.195954', '3', 'Harinas La Trigueña Ltda. (70.345.678-5)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"Contacto\", \"object\": \"Roberto Torres \\u2014 Harinas La Trigue\\u00f1a Ltda.\"}}]', 13, 1),
+(64, '2025-10-07 17:57:06.306529', '4', 'Huevos San Pedro (70.456.789-0)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"Contacto\", \"object\": \"Laura D\\u00edaz \\u2014 Huevos San Pedro\"}}]', 13, 1),
+(65, '2025-10-07 17:58:06.156863', '5', 'Azúcar y Dulzura SpA (70.567.890-1)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"Contacto\", \"object\": \"Carlos Soto \\u2014 Az\\u00facar y Dulzura SpA\"}}]', 13, 1),
+(66, '2025-10-07 18:00:17.951857', '6', 'Frutos Secos El Trébol (70.678.901-2)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"Contacto\", \"object\": \"Valentina Ram\\u00edrez \\u2014 Frutos Secos El Tr\\u00e9bol\"}}]', 13, 1),
+(67, '2025-10-07 18:01:17.877182', '7', 'Envases y Etiquetas del Norte (70.789.012-3)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"Contacto\", \"object\": \"Pablo Fern\\u00e1ndez \\u2014 Envases y Etiquetas del Norte\"}}]', 13, 1),
+(68, '2025-10-07 18:02:15.200197', '8', 'Distribuidora PanSur Ltda. (70.890.123-4)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"Contacto\", \"object\": \"Andr\\u00e9s Herrera \\u2014 Distribuidora PanSur Ltda.\"}}]', 13, 1),
+(69, '2025-10-07 18:03:10.030992', '9', 'La Dulcería Familiar (70.901.234-5)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"Contacto\", \"object\": \"Teresa Mart\\u00ednez \\u2014 La Dulcer\\u00eda Familiar\"}}]', 13, 1),
+(70, '2025-10-07 18:03:55.454452', '10', 'Cartonajes San Andrés (70.012.345-6)', 1, '[{\"added\": {}}, {\"added\": {\"name\": \"Contacto\", \"object\": \"Felipe Gonz\\u00e1lez \\u2014 Cartonajes San Andr\\u00e9s\"}}]', 13, 1);
 
 -- --------------------------------------------------------
 
@@ -360,11 +402,11 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 DROP TABLE IF EXISTS `django_content_type`;
 CREATE TABLE IF NOT EXISTS `django_content_type` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `app_label` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `app_label` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `django_content_type`
@@ -381,8 +423,12 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (8, 'inventario', 'lote'),
 (9, 'inventario', 'categoria'),
 (10, 'usuarios', 'cargo'),
-(11, 'usuarios', 'empleado'),
-(12, 'usuarios', 'departamento');
+(11, 'usuarios', 'departamento'),
+(12, 'usuarios', 'empleado'),
+(13, 'proveedores', 'proveedor'),
+(14, 'proveedores', 'rubro'),
+(15, 'proveedores', 'contacto'),
+(16, 'proveedores', 'auditoriaproveedor');
 
 -- --------------------------------------------------------
 
@@ -393,39 +439,43 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 DROP TABLE IF EXISTS `django_migrations`;
 CREATE TABLE IF NOT EXISTS `django_migrations` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `app` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `app` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `django_migrations`
 --
 
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
-(1, 'contenttypes', '0001_initial', '2025-10-03 20:25:13.528258'),
-(2, 'auth', '0001_initial', '2025-10-03 20:25:14.089837'),
-(3, 'admin', '0001_initial', '2025-10-03 20:25:14.429207'),
-(4, 'admin', '0002_logentry_remove_auto_add', '2025-10-03 20:25:14.443755'),
-(5, 'admin', '0003_logentry_add_action_flag_choices', '2025-10-03 20:25:14.473325'),
-(6, 'contenttypes', '0002_remove_content_type_name', '2025-10-03 20:25:14.560655'),
-(7, 'auth', '0002_alter_permission_name_max_length', '2025-10-03 20:25:14.613087'),
-(8, 'auth', '0003_alter_user_email_max_length', '2025-10-03 20:25:14.693696'),
-(9, 'auth', '0004_alter_user_username_opts', '2025-10-03 20:25:14.699999'),
-(10, 'auth', '0005_alter_user_last_login_null', '2025-10-03 20:25:14.737148'),
-(11, 'auth', '0006_require_contenttypes_0002', '2025-10-03 20:25:14.738163'),
-(12, 'auth', '0007_alter_validators_add_error_messages', '2025-10-03 20:25:14.745166'),
-(13, 'auth', '0008_alter_user_username_max_length', '2025-10-03 20:25:14.792029'),
-(14, 'auth', '0009_alter_user_last_name_max_length', '2025-10-03 20:25:14.853972'),
-(15, 'auth', '0010_alter_group_name_max_length', '2025-10-03 20:25:14.908250'),
-(16, 'auth', '0011_update_proxy_permissions', '2025-10-03 20:25:14.918651'),
-(17, 'auth', '0012_alter_user_first_name_max_length', '2025-10-03 20:25:14.979361'),
-(18, 'inventario', '0001_initial', '2025-10-03 20:25:15.236583'),
-(19, 'inventario', '0002_categoria_producto_categoria', '2025-10-03 20:25:15.424817'),
-(20, 'sessions', '0001_initial', '2025-10-03 20:25:15.505979'),
-(21, 'inventario', '0003_alter_categoria_slug', '2025-10-03 21:36:19.391285'),
-(22, 'usuarios', '0001_initial', '2025-10-05 00:27:00.346790');
+(1, 'contenttypes', '0001_initial', '2025-10-07 17:05:07.973089'),
+(2, 'auth', '0001_initial', '2025-10-07 17:05:08.532627'),
+(3, 'admin', '0001_initial', '2025-10-07 17:05:08.753413'),
+(4, 'admin', '0002_logentry_remove_auto_add', '2025-10-07 17:05:08.753413'),
+(5, 'admin', '0003_logentry_add_action_flag_choices', '2025-10-07 17:05:08.771196'),
+(6, 'contenttypes', '0002_remove_content_type_name', '2025-10-07 17:05:08.839850'),
+(7, 'auth', '0002_alter_permission_name_max_length', '2025-10-07 17:05:08.877305'),
+(8, 'auth', '0003_alter_user_email_max_length', '2025-10-07 17:05:08.916982'),
+(9, 'auth', '0004_alter_user_username_opts', '2025-10-07 17:05:08.926313'),
+(10, 'auth', '0005_alter_user_last_login_null', '2025-10-07 17:05:08.962193'),
+(11, 'auth', '0006_require_contenttypes_0002', '2025-10-07 17:05:08.962193'),
+(12, 'auth', '0007_alter_validators_add_error_messages', '2025-10-07 17:05:08.970854'),
+(13, 'auth', '0008_alter_user_username_max_length', '2025-10-07 17:05:09.003420'),
+(14, 'auth', '0009_alter_user_last_name_max_length', '2025-10-07 17:05:09.049940'),
+(15, 'auth', '0010_alter_group_name_max_length', '2025-10-07 17:05:09.087729'),
+(16, 'auth', '0011_update_proxy_permissions', '2025-10-07 17:05:09.097175'),
+(17, 'auth', '0012_alter_user_first_name_max_length', '2025-10-07 17:05:09.135505'),
+(18, 'inventario', '0001_initial', '2025-10-07 17:05:09.283319'),
+(19, 'inventario', '0002_categoria_producto_categoria', '2025-10-07 17:05:09.388262'),
+(20, 'inventario', '0003_alter_categoria_slug', '2025-10-07 17:05:09.390270'),
+(21, 'proveedores', '0001_initial', '2025-10-07 17:05:09.616274'),
+(22, 'proveedores', '0002_remove_contacto_email_remove_contacto_nombre_and_more', '2025-10-07 17:05:09.783066'),
+(23, 'proveedores', '0003_remove_contacto_usuario_contacto_email_and_more', '2025-10-07 17:05:10.033103'),
+(24, 'sessions', '0001_initial', '2025-10-07 17:05:10.075191'),
+(25, 'usuarios', '0001_initial', '2025-10-07 17:05:10.270810'),
+(26, 'inventario', '0004_remove_categoria_slug', '2025-10-07 18:12:18.387548');
 
 -- --------------------------------------------------------
 
@@ -435,20 +485,22 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 
 DROP TABLE IF EXISTS `django_session`;
 CREATE TABLE IF NOT EXISTS `django_session` (
-  `session_key` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `session_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `session_key` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `session_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `expire_date` datetime(6) NOT NULL,
   PRIMARY KEY (`session_key`),
   KEY `django_session_expire_date_a5c62663` (`expire_date`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `django_session`
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('m65dtg8b5hyohzglgnl4ubw612ujfc7a', '.eJxVjDsOwjAQBe_iGlnZ-ENCSZ8zWLvrNQ4gW4qTCnF3iJQC2jcz76UCbmsOW5MlzFFdFKjT70bIDyk7iHcst6q5lnWZSe-KPmjTU43yvB7u30HGlr8185DYeofsk-udDJAMEyZvRuMxnrueBTsCEg-WPEXrQEawglZYTFTvDwwmORI:1v6B9S:wWpRZcE7Sod5JOXXS_tYYL-XlFUyPlz8Axnby5PuW8A', '2025-10-21 17:07:02.765378'),
 ('ozc8soxeqa5862tufu2egjnvlgp38pqs', '.eJxVjMEOwiAQRP-FsyELLSx49O43kAVWqRpISnsy_rtt0oMeZ96beYtA61LC2nkOUxZnocTpt4uUnlx3kB9U702mVpd5inJX5EG7vLbMr8vh_h0U6mVbD2iYdYw2s9ZeDWxgBErebtGhyo6AnXU-YSILkLwBvDlG9MqOg0bx-QLUCTb0:1v4mPb:gjj8X4r36oioPK3O6ezuygafEc76eVUQMlzVYhbvWWA', '2025-10-17 20:29:55.324000'),
-('vgmktitzurtaq8fivvouvetzjdcaqlnu', '.eJxVjMEOwiAQRP-FsyELLSx49O43kAVWqRpISnsy_rtt0oMeZ96beYtA61LC2nkOUxZnocTpt4uUnlx3kB9U702mVpd5inJX5EG7vLbMr8vh_h0U6mVbD2iYdYw2s9ZeDWxgBErebtGhyo6AnXU-YSILkLwBvDlG9MqOg0bx-QLUCTb0:1v4pGD:k15pzjFK0ObBwQZeX-x3hGAKcakiMxd9LEUjFd_JYNY', '2025-10-17 23:32:25.008306');
+('vgmktitzurtaq8fivvouvetzjdcaqlnu', '.eJxVjMEOwiAQRP-FsyELLSx49O43kAVWqRpISnsy_rtt0oMeZ96beYtA61LC2nkOUxZnocTpt4uUnlx3kB9U702mVpd5inJX5EG7vLbMr8vh_h0U6mVbD2iYdYw2s9ZeDWxgBErebtGhyo6AnXU-YSILkLwBvDlG9MqOg0bx-QLUCTb0:1v4pGD:k15pzjFK0ObBwQZeX-x3hGAKcakiMxd9LEUjFd_JYNY', '2025-10-17 23:32:25.008306'),
+('g4w5jblc4p848ga837xfuph5v9ivz0xe', '.eJxVjMEOwiAQRP-FsyELLSx49O43kAVWqRpISnsy_rtt0oMeZ96beYtA61LC2nkOUxZnocTpt4uUnlx3kB9U702mVpd5inJX5EG7vLbMr8vh_h0U6mVbD2iYdYw2s9ZeDWxgBErebtGhyo6AnXU-YSILkLwBvDlG9MqOg0bx-QLUCTb0:1v5uh8:PKfI-X5o5nCtLkHrqSm_0oAZsm4psWILwYgcII3oUqc', '2025-10-20 23:32:42.437424');
 
 -- --------------------------------------------------------
 
@@ -459,12 +511,12 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 DROP TABLE IF EXISTS `empleado`;
 CREATE TABLE IF NOT EXISTS `empleado` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `run` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `paterno` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `materno` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sexo` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codigoEmpleado` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `run` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `nombre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `paterno` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `materno` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `sexo` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `codigoEmpleado` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `sueldo` int UNSIGNED NOT NULL,
   `fechNac` date DEFAULT NULL,
   `creado` datetime(6) NOT NULL,
@@ -473,7 +525,7 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   PRIMARY KEY (`id`),
   KEY `empleado_cargo_id_bb5f1a73` (`cargo_id`),
   KEY `empleado_departamento_id_bf397cb9` (`departamento_id`)
-) ;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `empleado`
@@ -500,10 +552,10 @@ INSERT INTO `empleado` (`id`, `run`, `nombre`, `paterno`, `materno`, `sexo`, `co
 DROP TABLE IF EXISTS `lote`;
 CREATE TABLE IF NOT EXISTS `lote` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `codigo` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `cantidad` int UNSIGNED NOT NULL,
   `fecha_vencimiento` date DEFAULT NULL,
-  `ubicacion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ubicacion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `creado` datetime(6) NOT NULL,
   `producto_id` bigint NOT NULL,
   PRIMARY KEY (`id`),
@@ -605,8 +657,8 @@ INSERT INTO `lote` (`id`, `codigo`, `cantidad`, `fecha_vencimiento`, `ubicacion`
 DROP TABLE IF EXISTS `producto`;
 CREATE TABLE IF NOT EXISTS `producto` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `unidad` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `unidad` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
   `precio` decimal(12,2) NOT NULL,
   `stock_minimo` int UNSIGNED NOT NULL,
   `creado` datetime(6) NOT NULL,
@@ -659,6 +711,144 @@ INSERT INTO `producto` (`id`, `nombre`, `unidad`, `precio`, `stock_minimo`, `cre
 (37, 'Bombones 12un', 'UN', 9600.00, 5, '2025-10-03 17:27:30.000000', 1),
 (38, 'Conito de Higo', 'UN', 3300.00, 5, '2025-10-03 17:27:30.000000', 1),
 (39, 'Torta de Higos', 'UN', 3500.00, 5, '2025-10-03 17:27:30.000000', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores_auditoriaproveedor`
+--
+
+DROP TABLE IF EXISTS `proveedores_auditoriaproveedor`;
+CREATE TABLE IF NOT EXISTS `proveedores_auditoriaproveedor` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `accion` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `fecha` datetime(6) NOT NULL,
+  `usuario` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `proveedor_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `proveedores_auditoriaproveedor_proveedor_id_f09fcafb` (`proveedor_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `proveedores_auditoriaproveedor`
+--
+
+INSERT INTO `proveedores_auditoriaproveedor` (`id`, `accion`, `fecha`, `usuario`, `proveedor_id`) VALUES
+(1, 'Creación', '2025-10-07 17:51:55.790310', '', 1),
+(2, 'Creación', '2025-10-07 17:53:57.106376', '', 2),
+(3, 'Creación', '2025-10-07 17:55:01.193128', '', 3),
+(4, 'Creación', '2025-10-07 17:57:06.300080', '', 4),
+(5, 'Creación', '2025-10-07 17:58:06.147985', '', 5),
+(6, 'Creación', '2025-10-07 18:00:17.951857', '', 6),
+(7, 'Creación', '2025-10-07 18:01:17.720517', '', 7),
+(8, 'Creación', '2025-10-07 18:02:15.192915', '', 8),
+(9, 'Creación', '2025-10-07 18:03:10.030992', '', 9),
+(10, 'Creación', '2025-10-07 18:03:55.446342', '', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores_contacto`
+--
+
+DROP TABLE IF EXISTS `proveedores_contacto`;
+CREATE TABLE IF NOT EXISTS `proveedores_contacto` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `cargo` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `proveedor_id` bigint NOT NULL,
+  `email` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `telefono` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `proveedores_contacto_proveedor_id_5d3b8aa7` (`proveedor_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `proveedores_contacto`
+--
+
+INSERT INTO `proveedores_contacto` (`id`, `cargo`, `proveedor_id`, `email`, `nombre`, `telefono`) VALUES
+(1, 'Gerente de Ventas', 1, 'juan.perez@dulcesdelvalle.cl', 'Juan Pérez', '+56 9 1234 5678'),
+(2, 'Coordinadora de Marketing', 2, 'maria.gonzalez@caramelosyconfites.cl', 'María González', '+56 9 2345 6789'),
+(3, 'Director de Operaciones', 3, 'roberto.torres@bomboneschile.cl', 'Roberto Torres', '+56 9 3456 7890'),
+(4, 'Ejecutiva de Cuentas', 4, 'laura.diaz@frutossecostrebol.cl', 'Laura Díaz', '+56 9 4567 8901'),
+(5, 'Jefe de Logística', 5, 'carlos.soto@azucarydulzura.cl', 'Carlos Soto', '+56 9 5678 9012'),
+(6, 'Responsable de Compras', 6, 'valentina.ramirez@casadelregaliz.cl', 'Valentina Ramírez', '+56 9 6789 0123'),
+(7, 'Director Financiero', 7, 'pablo.fernandez@golosinascoloridas.cl', 'Pablo Fernández', '+56 9 7890 1234'),
+(8, 'Asesor Comercial', 8, 'andres.herrera@confiteriareal.cl', 'Andrés Herrera', '+56 9 8901 2345'),
+(9, 'Encargada de Clientes', 9, 'teresa.martinez@ladulceriafamiliar.cl', 'Teresa Martínez', '+56 9 9012 3456'),
+(10, 'Director General', 10, 'felipe.gonzalez@sweetsgalletas.cl', 'Felipe González', '+56 9 1023 4567');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores_proveedor`
+--
+
+DROP TABLE IF EXISTS `proveedores_proveedor`;
+CREATE TABLE IF NOT EXISTS `proveedores_proveedor` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `rut` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `nombre` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `email` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `telefono` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `direccion` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `ciudad` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `activo` tinyint(1) NOT NULL,
+  `fecha_creacion` datetime(6) NOT NULL,
+  `fecha_modificacion` datetime(6) NOT NULL,
+  `rubro_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `rut` (`rut`),
+  KEY `proveedores_proveedor_rubro_id_c0dd5b10` (`rubro_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `proveedores_proveedor`
+--
+
+INSERT INTO `proveedores_proveedor` (`id`, `rut`, `nombre`, `email`, `telefono`, `direccion`, `ciudad`, `activo`, `fecha_creacion`, `fecha_modificacion`, `rubro_id`) VALUES
+(1, '70.123.456-7', 'Dulces del Valle Ltda.', 'contacto@dulcesdelvalle.cl', '+56 9 8123 4567', 'Av. Balmaceda 1345', 'La Serena', 1, '2025-10-07 17:51:55.790310', '2025-10-07 17:51:55.790310', 5),
+(2, '70.234.567-8', 'Caramelos y Confites S.A.', 'ventas@caramelosyconfites.cl', '+56 9 8234 5678', 'Av. España 2450', 'Coquimbo', 1, '2025-10-07 17:53:57.106376', '2025-10-07 17:53:57.106376', 6),
+(3, '70.345.678-5', 'Harinas La Trigueña Ltda.', 'contacto@latriguena.cl', '+56 9 8345 6789', 'Ruta D-43 km 12', 'Ovalle', 1, '2025-10-07 17:55:01.193128', '2025-10-07 17:55:01.193128', 7),
+(4, '70.456.789-0', 'Huevos San Pedro', 'pedidos@huevossanpedro.cl', '+56 9 8456 7890', 'Av. Colón 4500', 'Santiago', 1, '2025-10-07 17:57:06.300080', '2025-10-07 17:57:06.300080', 8),
+(5, '70.567.890-1', 'Azúcar y Dulzura SpA', 'insumos@azucarydulzura.cl', '+56 9 8567 8901', 'Av. Francisco de Aguirre 120', 'La Serena', 1, '2025-10-07 17:58:05.998617', '2025-10-07 17:58:05.998617', 9),
+(6, '70.678.901-2', 'Frutos Secos El Trébol', 'ventas@eltrrebol.cl', '+56 9 8678 9012', 'Av. O’Higgins 980', 'Rancagua', 1, '2025-10-07 18:00:17.949718', '2025-10-07 18:00:17.949718', 10),
+(7, '70.789.012-3', 'Envases y Etiquetas del Norte', 'contacto@envasesnorte.cl', '+56 9 8789 0123', 'Av. Varela 2345', 'Copiapó', 1, '2025-10-07 18:01:17.720517', '2025-10-07 18:01:17.720517', 11),
+(8, '70.890.123-4', 'Distribuidora PanSur Ltda.', 'ventas@pansur.cl', '+56 9 8890 1234', 'Los Carrera 1780', 'Talca', 1, '2025-10-07 18:02:15.192915', '2025-10-07 18:02:15.192915', 12),
+(9, '70.901.234-5', 'La Dulcería Familiar', 'ventas@ladulceriafamiliar.cl', '+56 9 8901 2345', 'Av. Independencia 870', 'Temuco', 1, '2025-10-07 18:03:10.022897', '2025-10-07 18:03:10.022897', 13),
+(10, '70.012.345-6', 'Cartonajes San Andrés', 'contacto@cartonajessanandres.cl', '+56 9 9012 3456', 'Camino Real 1456', 'Viña del Mar', 1, '2025-10-07 18:03:55.446342', '2025-10-07 18:03:55.446342', 14);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores_rubro`
+--
+
+DROP TABLE IF EXISTS `proveedores_rubro`;
+CREATE TABLE IF NOT EXISTS `proveedores_rubro` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `descripcion` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre` (`nombre`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `proveedores_rubro`
+--
+
+INSERT INTO `proveedores_rubro` (`id`, `nombre`, `descripcion`) VALUES
+(6, 'Venta de dulces al por mayor', ''),
+(5, 'Golosinas importadas y confites', ''),
+(7, 'Proveedor de harina y derivados', ''),
+(8, 'Distribución de huevos frescos', ''),
+(9, 'Azúcar, endulzantes y cacao', ''),
+(10, 'Frutos secos y semillas', ''),
+(11, 'Envases plásticos, frascos y etiquetas', ''),
+(12, 'Margarinas, mantequillas y aceites', ''),
+(13, 'Productos artesanales', ''),
+(14, 'Cajas y envoltorios para dulces', '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

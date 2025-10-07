@@ -1,5 +1,3 @@
-# catalogo/data.py
-# Catálogo con: nombre, precio, descripción, info_adicional e imagen.
 IMAGES_DIR = "IMG"
 
 def P(slug, nombre, filename, precio, descripcion, info_adicional=""):

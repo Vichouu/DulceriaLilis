@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'inventario',
     'catalogo',
     'usuarios',
+    'proveedores',
 ]
 
 # --- Middleware ---
