@@ -1,0 +1,52 @@
+INSTRUCCIONES DE INSTALACIÓN Y REQUERIMIENTOS
+
+Archivos del repo que usaremos:
+- dulcerialilis.sql                   -> respaldo de la base de datos
+- Dependencias/timezone_mysql.sql     -> tablas de zonas horarias para MySQL (para evitar errores de TIME ZONE).
+
+
+1) CLONAR EL PROYECTO Y PREPARAR ENTORNO
+1. Clonar en Visual Studio Code o terminal:
+   git clone https://github.com/Vichouu/DulceriaLilis.git
+2. Entrar al proyecto:
+   cd DulceriaLilis
+3. Instalar dependencias necesarias:
+   pip install django
+   pip install mysqlclient
+
+
+2) CREAR LA BASE DE DATOS EN MYSQL
+1. Abrir phpMyAdmin -> pestaña "Bases de datos".
+2. Crear una base de datos con codificación utf8mb4:
+   Nombre: dulcerialilis
+   Intercalación: utf8mb4_general_ci
+3. Verificar que ahora existe la base "dulcerialilis" vacía.
+
+
+3) CREAR/VERIFICAR USUARIO Y PRIVILEGIOS
+1. En phpMyAdmin -> pestaña "Cuentas de usuario" -> pulsar "Añadir cuenta de usuario".
+2. Usuario:lilisdbuser
+   Host: localhost
+   Contraseña: Ventana#123
+3. En "Privilegios globales" -> dar todo los permisos al usuario 
+4. Guardar.
+5. Si el usuario ya existía pero no conecta:
+   - Eliminar la cuenta y volver a crearla con Host=localhost.
+   - Asegurar que el servicio MySQL está iniciado (Services.msc -> MySQL -> Running).
+
+
+4) IMPORTAR EL RESPALDO (DUMP) EN LA BASE
+1. En phpMyAdmin -> seleccionar la base "dulcerialilis".
+2. Ir a la pestaña "Importar".
+3. Seleccionar el archivo del repositorio: dulcerialilis.sql
+4. Ejecutar la importación y verificar que aparecen las tablas.
+
+
+5) CARGAR TABLAS DE ZONAS HORARIAS (EVITAR ERROR DE TIME ZONE)
+(Esto soluciona el error: "Database returned an invalid datetime value. Are time zone definitions for your database installed?")
+
+Opción A - phpMyAdmin:
+1. En phpMyAdmin -> abrir la base llamada "mysql".
+2. Ir a la pestaña "Importar".
+3. Seleccionar el archivo: Dependencias/timezone_mysql.sql
+
