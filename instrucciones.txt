@@ -2,7 +2,7 @@ INSTRUCCIONES DE INSTALACIÓN Y REQUERIMIENTOS
 
 Archivos del repo que usaremos:
 - dulcerialilis.sql                   -> respaldo de la base de datos
-- Dependencias/timezone_mysql.sql     -> tablas de zonas horarias para MySQL (para evitar errores de TIME ZONE).
+- Dependencias/timezone_posix.sql     -> tablas de zonas horarias para MySQL (para evitar errores de TIME ZONE).
 
 
 1) CLONAR EL PROYECTO Y PREPARAR ENTORNO
